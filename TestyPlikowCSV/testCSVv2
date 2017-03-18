@@ -1,0 +1,14 @@
+import csv
+
+c_plik = 'c:/tmp/csv2.txt'
+c_delimiter = ';'
+c_quoting = csv.QUOTE_NONNUMERIC
+c_encoding = 'windows-1250'
+
+fi = open(c_plik, 'r')
+reader = csv.DictReader(fi, delimiter=c_delimiter, quoting=c_quoting)
+
+for row in reader:
+    print row, ' decode: ', str(row['PoleStr2']).decode(c_encoding)
+    for k in row.keys():
+        print k, row[k], str(row[k]).decode(c_encoding)
